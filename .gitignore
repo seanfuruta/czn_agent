@@ -1,0 +1,11 @@
+# Data and Weights (Do not push to GitHub)
+data/
+vision_model/weights/
+
+# Hardware Credentials
+hardware_bridge/settings.toml
+
+# Python Cache
+__pycache__/
+*.pyc
+.env

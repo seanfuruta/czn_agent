@@ -1,0 +1,36 @@
+import usb_hid
+import storage
+import usb_cdc
+
+# --- 1. STORAGE ---
+if usb_cdc.console and usb_cdc.console.connected:
+    storage.remount("/", True)
+else:
+    storage.remount("/", False)
+
+# --- 2. DESCRIPTOR (Added Report ID 0x01) ---
+MOUSE_ABS_REPORT_DESCRIPTOR = bytes([
+    0x05, 0x01, 0x09, 0x02, 0xA1, 0x01,
+    0x85, 0x01,        # <--- ADDED: Report ID (1)
+    0x09, 0x01, 0xA1, 0x00,
+    0x05, 0x09, 0x19, 0x01, 0x29, 0x03, 0x15, 0x00, 0x25, 0x01, 0x95, 0x03, 0x75, 0x01, 0x81, 0x02,
+    0x95, 0x05, 0x75, 0x01, 0x81, 0x03,
+    0x05, 0x01, 0x09, 0x30, 0x09, 0x31, 0x15, 0x00, 
+    0x26, 0xFF, 0x7F, 0x75, 0x10, 0x95, 0x02, 0x81, 0x02, 
+    0xC0, 0xC0
+])
+
+# --- 3. DEVICE OBJECT ---
+# CRITICAL: report_ids must match the descriptor ID (1)
+# in_report_lengths becomes 6 (ID + Buttons + X/X + Y/Y)
+mouse_abs = usb_hid.Device(
+    report_descriptor=MOUSE_ABS_REPORT_DESCRIPTOR,
+    usage_page=0x01,
+    usage=0x02,
+    report_ids=(1,),        
+    in_report_lengths=(6,), 
+    out_report_lengths=(0,),
+)
+
+# Disable standard drivers and only enable our custom mouse
+usb_hid.enable((mouse_abs,))
