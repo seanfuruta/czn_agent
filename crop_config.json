@@ -1,0 +1,9 @@
+{
+    "crop_box": [
+        450,
+        700,
+        1020,
+        260
+    ],
+    "notes": "Coordinates format is [xmin, ymin, width, height]"
+}

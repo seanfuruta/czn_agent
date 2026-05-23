@@ -1,6 +1,7 @@
 # Data and Weights (Do not push to GitHub)
 data/
 vision_model/weights/
+vision_model/models/
 
 # Hardware Credentials
 hardware_bridge/settings.toml
@@ -9,3 +10,7 @@ hardware_bridge/settings.toml
 __pycache__/
 *.pyc
 .env
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+.vscode/*

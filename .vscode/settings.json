@@ -1,4 +1,7 @@
 {
-    "python.defaultInterpreterPath": "C:/Users/seanf/anaconda3/envs/czn_agent/python.exe",
-    "python.terminal.activateEnvironment": true
+    "python.defaultInterpreterPath": "${workspaceFolder}/.pixi/envs/cznagent/python.exe",
+    "python.analysis.environmentPath": "${workspaceFolder}/.pixi/envs",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/.pixi/envs/cznagent/Lib/site-packages"
+    ]
 }

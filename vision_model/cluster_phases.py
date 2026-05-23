@@ -58,4 +58,4 @@ RAW_FRAMES = "data/extracted_frames"
 CLUSTERED_OUTPUT = "data/grouped_phases"
 
 # Note: You may need to tweak the threshold (e.g., 10 to 25) depending on how flashy your screen transitions are
-group_sequential_frames(RAW_FRAMES, CLUSTERED_OUTPUT, threshold=15.0)
+group_sequential_frames(RAW_FRAMES, CLUSTERED_OUTPUT, threshold=20.0)
