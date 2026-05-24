@@ -1,0 +1,2 @@
+site-package-path = [".pixi/envs/cznagent/Lib/site-packages"]
+python-version = "3.10"
